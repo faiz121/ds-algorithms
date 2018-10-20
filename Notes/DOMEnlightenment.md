@@ -9,12 +9,12 @@ HTML code when parsed by a browser creates a document that contains nodes struct
 #### 1.2 Node object types
 The most common types of nodes
 
-DOCUMENT_NODE (e.g. `window.document`)
-ELEMENT_NODE - Code 1 (`<body>, <a>, <p>, <script>, <style>, <html>, <h1> etc...`)
-ATTRIBUTE_NODE (e.g. `class="funEdges"`)
-TEXT_NODE (e.g. text characters in an html document including carriage returns and white space)
-DOCUMENT_FRAGMENT_NODE (e.g. `document.createDocumentFragment()`)
-DOCUMENT_TYPE_NODE (e.g. `<!DOCTYPE html>`)
+* DOCUMENT_NODE (e.g. `window.document`)
+* ELEMENT_NODE - Code 1 (`<body>, <a>, <p>, <script>, <style>, <html>, <h1> etc...`)
+* ATTRIBUTE_NODE (e.g. `class="funEdges"`)
+* TEXT_NODE (e.g. text characters in an html document including carriage returns and white space)
+* DOCUMENT_FRAGMENT_NODE (e.g. `document.createDocumentFragment()`)
+* DOCUMENT_TYPE_NODE (e.g. `<!DOCTYPE html>`)
 
 Its important not only to remember that all nodes types inherit from Node but that the chain of inheritance can be long
 
@@ -25,45 +25,45 @@ All node objects (e.g Element, Attr, Text etc...) inherit properties and methods
 Below I list out the most common Node properties and methods inherited by all node objects including the relevant inherited properties for working with nodes from sub-node interfaces.
 
 **Node Properties:**
-  childNodes
-  firstChild
-  lastChild
-  nextSibling
-  nodeName
-  nodeType
-  nodeValue
-  parentNode
-  previousSibling
+*  childNodes
+*  firstChild
+*  lastChild
+*  nextSibling
+*  nodeName
+*  nodeType
+*  nodeValue
+*  parentNode
+*  previousSibling
 
 **Node Methods:**
-  appendChild()
-  cloneNode()
-  compareDocumentPosition()
-  contains()
-  hasChildNodes()
-  insertBefore()
-  isEqualNode()
-  removeChild()
-  replaceChild()
+* appendChild()
+* cloneNode()
+* compareDocumentPosition()
+* contains()
+* hasChildNodes()
+* insertBefore()
+* isEqualNode()
+* removeChild()
+* replaceChild()
 
 **Document Methods:**
-  document.createElement()
-  document.createTextNode()
+* document.createElement()
+* document.createTextNode()
 
 **HTML * Element Properties:**
-  innerHTML
-  outerHTML
-  textContent
-  innerText
-  outerText
-  firstElementChild
-  lastElementChild
-  nextElementChild
-  previousElementChild
-  children
+* innerHTML
+* outerHTML
+* textContent
+* innerText
+* outerText
+* firstElementChild
+* lastElementChild
+* nextElementChild
+* previousElementChild
+* children
 
 **HTML element Methods:**
-  insertAdjacentHTML()
+* insertAdjacentHTML()
   
 #### 1.5 Identifying the type and name of a node
 
