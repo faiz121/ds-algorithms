@@ -125,6 +125,15 @@ class BinarySearchTree {
     const max = Math.max(...heights);
     return max - min <= 1;
   }
+
+  isAValidBST(node = this, min = -Infinity, max = +Infinity) {
+    if (!node) return true;
+    if (node.value <= min || node.value > max) return false;
+    return (
+      this.isAValidBST(node.left, min, node.value) &&
+      this.isAValidBST(node.right, node.value, max)
+    );
+  }
 }
 
 const bsTree = new BinarySearchTree(8);
@@ -135,6 +144,7 @@ bsTree
   .insert(14)
   .insert(3)
   .insert(6)
+  // .insert(2) // add this to make it unbalanced
   .insert(1)
   .insert(0)
   .insert(7)
@@ -151,3 +161,15 @@ console.log(
   "should be [3, 5, 6, 8, 12, 13, 14]"
 );
 console.log("checkIfBalanced ", bsTree.checkIfBalanced());
+
+console.log("IsAValidBST", bsTree.isAValidBST());
+const result_traverseBreadthFirst = [];
+
+bsTree.traverseBreadthFirst(function(node) {
+  result_traverseBreadthFirst.push(node.value);
+});
+
+// bsTree.left.left.value = 10 change a value so its not a valid BST anymore
+console.log("IsAValidBST", bsTree.isAValidBST()); // if you uncomment above, this will fail
+console.log(result_traverseBreadthFirst, "Actual");
+console.log("[8, 5, 13, 3, 6, 12, 14, 1, 7, 11, 15, 0]", "expected");
