@@ -69,8 +69,7 @@ class Trie {
     }
   }
   findWords(value = "", node = this.find(value), words = []) {
-    Object.keys(node.children).forEach(c => {
-      const child = node.children[c];
+    Object.values(node.children).forEach(child => {
       if (child.isWord) words.push(value + child.value);
       child.findWords(value + child.value, child, words);
     });
