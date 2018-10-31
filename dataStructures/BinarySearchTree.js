@@ -74,26 +74,26 @@ class BinarySearchTree {
     if (value > this.value) !!this.right && this.right.contains(value);
     return false;
   }
-
+  // O(n)
   traverseDepthFirst_inOrder(fn) {
     if (!this.left && !this.right) return fn(this);
     if (this.left) this.left.traverseDepthFirst_inOrder(fn);
     fn(this);
     if (this.right) this.right.traverseDepthFirst_inOrder(fn);
   }
-
+  // O(n)
   traverseDepthFirst_preOrder(fn) {
     fn(this);
     if (this.left) this.left.traverseDepthFirst_inOrder(fn);
     if (this.right) this.right.traverseDepthFirst_inOrder(fn);
   }
-
+  // O(n)
   traverseDepthFirst_postOrder(fn) {
     if (this.left) this.left.traverseDepthFirst_inOrder(fn);
     if (this.right) this.right.traverseDepthFirst_inOrder(fn);
     fn(this);
   }
-
+  // O(n)
   traverseBreadthFirst(fn) {
     const queue = [this];
     while (queue.length) {
@@ -103,7 +103,7 @@ class BinarySearchTree {
       node.right && queue.push(node.right);
     }
   }
-
+  // O(n)
   checkIfFull() {
     var result = true;
     this.traverseBreadthFirst(function(node) {
@@ -112,7 +112,7 @@ class BinarySearchTree {
     });
     return result;
   }
-
+  // O(n)
   checkIfBalanced() {
     const heights = [];
     var recurse = (node, height) => {
@@ -125,7 +125,7 @@ class BinarySearchTree {
     const max = Math.max(...heights);
     return max - min <= 1;
   }
-
+  // O(n)
   isAValidBST(node = this, min = -Infinity, max = +Infinity) {
     if (!node) return true;
     if (node.value <= min || node.value > max) return false;
