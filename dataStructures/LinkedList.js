@@ -77,110 +77,111 @@ Reimplement stack and queue data structures using linked lists.
 
  */
 
-
 // PART 1
 
-function Node(value) {
+class Node {
+  constructor(value) {
     this.next = null;
     this.value = value;
   }
-  
-  function LinkedList(headValue) {
-    if (headValue === undefined) console.log('Must provide value for first node');
+}
+
+class LinkedList {
+  constructor(headValue) {
+    if (headValue === undefined)
+      console.log("Must provide value for first node");
     this.head = new Node(headValue);
     this.tail = this.head;
   }
-  
-  LinkedList.prototype.forEach = function(callback) {
+  forEach(callback) {
     let currentNode = this.head;
-    while(currentNode) {
+    while (currentNode) {
       callback(currentNode.value);
       currentNode = currentNode.next;
     }
-  };
+  }
   // Time complexity: O(n)
-  
-  LinkedList.prototype.print = function() {
+
+  print() {
     let result = [];
-    this.forEach((value) => {
+    this.forEach(value => {
       result.push(value);
-    })
-    return result.join(', ');
-  };
+    });
+    return result.join(", ");
+  }
   // Time complexity: O(n)
-  
-  LinkedList.prototype.insertAfter = function(node, value) {
+
+  insertAfter(node, value) {
     const oldNext = node.next;
     const newNext = new Node(value);
     node.next = newNext;
     newNext.next = oldNext;
-    if(this.tail === node) this.tail = newNext;
+    if (this.tail === node) this.tail = newNext;
     return newNext;
-  };
+  }
   // Time complexity:
-  
-  LinkedList.prototype.removeAfter = function(node) {
+
+  removeAfter(node) {
     const removedNode = node.next; // to be removed
-    if(!removedNode) return 'nothing to remove';
+    if (!removedNode) return "nothing to remove";
     const newNext = removedNode.next;
     node.next = newNext;
     removedNode.next = null;
-    if(this.tail === removedNode) this.tail = node;
+    if (this.tail === removedNode) this.tail = node;
     return removedNode;
-  };
+  }
   // Time complexity:
-  
-  LinkedList.prototype.insertHead = function(value) {
+
+  insertHead(value) {
     var newHead = new Node(value);
     var oldHead = this.head;
     this.head = newHead;
     newHead.next = oldHead;
     return this.head;
-  };
+  }
   // Time complexity:
-  
-  LinkedList.prototype.removeHead = function() {
+
+  removeHead() {
     var oldHead = this.head;
     var newHead = oldHead.next;
     this.head = newHead;
     oldHead.next = null;
     return oldHead;
   }
-  
-  LinkedList.prototype.findNode = function(value) {
+
+  findNode(value) {
     let currentNode = this.head;
-    while(currentNode) {
+    while (currentNode) {
       if (currentNode.value === value) return currentNode;
       currentNode = currentNode.next;
     }
     return `No node with ${value} was found`;
-  };
+  }
   // Time complexity:
-  
-  LinkedList.prototype.appendToTail = function(value) {
+
+  appendToTail(value) {
     var newTail = new Node(value);
     this.tail.next = newTail;
     this.tail = newTail;
     return newTail;
-  };
+  }
   // Time complexity:
-  
-  
+
   // PART 2:
-  
-  LinkedList.prototype.insertBefore = function(node, value) {
+
+  insertBefore(node, value) {
     // implement me...
-  };
+  }
   // Time complexity:
-  
-  LinkedList.prototype.removeBefore = function(node) {
+
+  removeBefore(node) {
     // implement me...
-  };
-  // Time complexity:
-  
-  
-  
-  /*
+  }
+}
+
+// Time complexity:
+
+/*
   *** Exercises:
   
   1. Implement a stack using a linked list.
@@ -204,28 +205,33 @@ function Node(value) {
   1 1 5 6   (1 -> 1 -> 5 -> 6)
   
    */
-  
-  
-  var myList = new LinkedList(0);
-  
-  console.log(myList.print(), 'should be 0');
-  console.log(myList.insertAfter(myList.head, 1), 'should be 1');
-  console.log(myList.print(), 'should be 0, 1');
-  console.log(myList.insertAfter(myList.head.next, 3), 'should be 3');
-  console.log(myList.print(), 'should be 0, 1, 3');
-  console.log(myList.insertAfter(myList.head.next, 2), 'should be 2');
-  console.log(myList.print(), 'should be 0, 1, 2, 3');
-  console.log(myList.removeAfter(myList.head), 'should be 1');
-  console.log(myList.print(), 'should be 0, 2, 3');
-  console.log(myList.insertHead(-1), 'should be -1');
-  console.log(myList.print(), 'should be -1, 0, 2, 3');
-  console.log(myList.removeHead(), 'should be -1');
-  console.log(myList.print(), 'should be 0, 2, 3');
-  console.log(myList.appendToTail(4), 'should be 4');
-  console.log(myList.print(), 'should be 0, 2, 3, 4');
-  console.log(myList.findNode(0) === myList.head, 'should be true');
-  console.log(myList.findNode(3) === myList.head.next.next, 'should be true');
-  myList.insertAfter(myList.findNode(2), 2.5);
-  console.log(myList.print(), 'should be 0, 2, 2.5, 3, 4');
-  myList.removeAfter(myList.findNode(2));
-  console.log(myList.print(), 'should be 0, 2, 3, 4');
+
+// var myList = new LinkedList(0);
+
+// console.log(myList.print(), "should be 0");
+// console.log(myList.insertAfter(myList.head, 1), "should be 1");
+// console.log(myList.print(), "should be 0, 1");
+// console.log(myList.insertAfter(myList.head.next, 3), "should be 3");
+// console.log(myList.print(), "should be 0, 1, 3");
+// console.log(myList.insertAfter(myList.head.next, 2), "should be 2");
+// console.log(myList.print(), "should be 0, 1, 2, 3");
+// console.log(myList.removeAfter(myList.head), "should be 1");
+// console.log(myList.print(), "should be 0, 2, 3");
+// console.log(myList.insertHead(-1), "should be -1");
+// console.log(myList.print(), "should be -1, 0, 2, 3");
+// console.log(myList.removeHead(), "should be -1");
+// console.log(myList.print(), "should be 0, 2, 3");
+// console.log(myList.appendToTail(4), "should be 4");
+// console.log(myList.print(), "should be 0, 2, 3, 4");
+// console.log(myList.findNode(0) === myList.head, "should be true");
+// console.log(myList.findNode(3) === myList.head.next.next, "should be true");
+// myList.insertAfter(myList.findNode(2), 2.5);
+// console.log(myList.print(), "should be 0, 2, 2.5, 3, 4");
+// myList.removeAfter(myList.findNode(2));
+// console.log(myList.print(), "should be 0, 2, 3, 4");
+// console.log(myList.appendToTail(5), "should be 4");
+// console.log(myList.appendToTail(6), "should be 4");
+// console.log(myList.appendToTail(7), "should be 4");
+// console.log(myList.print(), "should be 0, 2, 3, 4, 5, 6, 7");
+
+module.exports = LinkedList;

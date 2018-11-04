@@ -48,40 +48,39 @@ What's the time complexity?
  */
 
 function Stack(capacity) {
-    this._capacity = capacity || Infinity;
-    this._storage = {};
-    this._count = 0;
-  }
-  
-  Stack.prototype.push = function(value) {
-    if(this._count < this._capacity) {
-      this._storage[this._count++] = value;
-      return this._count;
-    }
-    return "max size reached"
-  };
-  // Time complexity: O(n)
-  
-  Stack.prototype.pop = function() {
-    const val = this._storage[this._count]
-    delete this._storage[this._count]
-    this._count--;
-    return val;
-  };
-  // Time complexity: O(1)
-  
-  Stack.prototype.peek = function() {
-    this._storage[this._count - 1]
-  };
-  // Time complexity: O(1)
-  
-  Stack.prototype.count = function() {
+  this._capacity = capacity || Infinity;
+  this._storage = {};
+  this._count = 0;
+}
+
+Stack.prototype.push = function(value) {
+  if (this._count < this._capacity) {
+    this._storage[this._count++] = value;
     return this._count;
-  };
-  // Time complexity: O(1)
-  
-  
-  /*
+  }
+  return "max size reached";
+};
+// Time complexity: O(n)
+
+Stack.prototype.pop = function() {
+  const val = this._storage[this._count - 1];
+  delete this._storage[this._count - 1];
+  this._count--;
+  return val;
+};
+// Time complexity: O(1)
+
+Stack.prototype.peek = function() {
+  return this._storage[this._count - 1];
+};
+// Time complexity: O(1)
+
+Stack.prototype.count = function() {
+  return this._count;
+};
+// Time complexity: O(1)
+
+/*
   *** Exercises:
   
   1. Implement a stack with a min method which returns the minimum element currently in the stack. This method should have O(1) time complexity. Make sure your implementation handles duplicates.
@@ -99,4 +98,5 @@ function Stack(capacity) {
      3. no disk can be placed on top of a disk that is smaller than it
   The disks begin on tower#1. Write a function that will move the disks from tower#1 to tower#3 in such a way that none of the constraints are violated.
    */
-  
+
+module.exports = Stack;

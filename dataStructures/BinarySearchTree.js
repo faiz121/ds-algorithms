@@ -114,16 +114,32 @@ class BinarySearchTree {
   }
   // O(n)
   checkIfBalanced() {
-    const heights = [];
-    var recurse = (node, height) => {
-      if (!node.left && !node.right) return heights.push(height);
-      node.left && recurse(node.left, height + 1);
-      node.right && recurse(node.right, height + 1);
+    var checkHeights = node => {
+      if (node === null) return -1;
+
+      let leftHeight = checkHeights(node.left);
+      if (leftHeight === -Infinity) return -Infinity;
+      let rightHeight = checkHeights(node.right);
+      if (rightHeight === -Infinity) return -Infinity;
+
+      let heightDiff = leftHeight - rightHeight;
+      if (Math.abs(heightDiff) > 1) {
+        return -Infinity;
+      } else {
+        return Math.max(leftHeight, rightHeight) + 1;
+      }
     };
-    recurse(this, 1);
-    const min = Math.min(...heights);
-    const max = Math.max(...heights);
-    return max - min <= 1;
+    return checkHeights(this) !== -Infinity;
+    // const heights = [];
+    // var recurse = (node, height) => {
+    //   if (!node.left && !node.right) return heights.push(height);
+    //   node.left && recurse(node.left, height + 1);
+    //   node.right && recurse(node.right, height + 1);
+    // };
+    // recurse(this, 1);
+    // const min = Math.min(...heights);
+    // const max = Math.max(...heights);
+    // return max - min <= 1;
   }
   // O(n)
   isAValidBST(node = this, min = -Infinity, max = +Infinity) {
@@ -144,9 +160,9 @@ bsTree
   .insert(14)
   .insert(3)
   .insert(6)
-  // .insert(2) // add this to make it unbalanced
-  .insert(1)
-  .insert(0)
+  .insert(2) 
+  // .insert(1) // add these to make it unbalanced
+  // .insert(0)
   .insert(7)
   .insert(11)
   .insert(15);
@@ -162,14 +178,16 @@ console.log(
 );
 console.log("checkIfBalanced ", bsTree.checkIfBalanced());
 
-console.log("IsAValidBST", bsTree.isAValidBST());
-const result_traverseBreadthFirst = [];
+// console.log("IsAValidBST", bsTree.isAValidBST());
+// const result_traverseBreadthFirst = [];
 
-bsTree.traverseBreadthFirst(function(node) {
-  result_traverseBreadthFirst.push(node.value);
-});
+// bsTree.traverseBreadthFirst(function(node) {
+//   result_traverseBreadthFirst.push(node.value);
+// });
 
-// bsTree.left.left.value = 10 change a value so its not a valid BST anymore
-console.log("IsAValidBST", bsTree.isAValidBST()); // if you uncomment above, this will fail
-console.log(result_traverseBreadthFirst, "Actual");
-console.log("[8, 5, 13, 3, 6, 12, 14, 1, 7, 11, 15, 0]", "expected");
+// // bsTree.left.left.value = 10 change a value so its not a valid BST anymore
+// console.log("IsAValidBST", bsTree.isAValidBST()); // if you uncomment above, this will fail
+// console.log(result_traverseBreadthFirst, "Actual");
+// console.log("[8, 5, 13, 3, 6, 12, 14, 1, 7, 11, 15, 0]", "expected");
+
+module.exports = BinarySearchTree;

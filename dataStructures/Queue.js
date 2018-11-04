@@ -33,6 +33,11 @@ class Queue {
     return this._tail - this._head;
   }
 
+  // O(1)
+  isEmpty() {
+    return this.count() === 0;
+  }
+
   // O(n)
   contains(value) {
     for (var i = this._head; i < this._tail; i++) {
@@ -50,20 +55,20 @@ class Queue {
   }
 }
 
-var myQueue = new Queue(3);
-console.log(myQueue.enqueue("a"), "should be 1");
-console.log(myQueue.enqueue("b"), "should be 2");
-console.log(myQueue.enqueue("c"), "should be 3");
-console.log(myQueue.enqueue("d"), "should be Max capacity reached");
-console.log(myQueue.dequeue(), "should be a");
-console.log(myQueue.count(), "should be 2");
-console.log(myQueue.peek(), "should be b");
-console.log(myQueue.count(), "should be 2");
-console.log(myQueue.contains("b"), "should be true");
-console.log(myQueue.contains("d"), "should be false");
-console.log(myQueue._storage, myQueue._head);
-console.log(myQueue.until("b"), "should be 1");
-console.log(myQueue.until("c"), "should be 2");
-console.log(myQueue.until("d"), "should be null");
+// var myQueue = new Queue(3);
+// console.log(myQueue.enqueue("a"), "should be 1");
+// console.log(myQueue.enqueue("b"), "should be 2");
+// console.log(myQueue.enqueue("c"), "should be 3");
+// console.log(myQueue.enqueue("d"), "should be Max capacity reached");
+// console.log(myQueue.dequeue(), "should be a");
+// console.log(myQueue.count(), "should be 2");
+// console.log(myQueue.peek(), "should be b");
+// console.log(myQueue.count(), "should be 2");
+// console.log(myQueue.contains("b"), "should be true");
+// console.log(myQueue.contains("d"), "should be false");
+// console.log(myQueue._storage, myQueue._head);
+// console.log(myQueue.until("b"), "should be 1");
+// console.log(myQueue.until("c"), "should be 2");
+// console.log(myQueue.until("d"), "should be null");
 
 module.exports = Queue;
