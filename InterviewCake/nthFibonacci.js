@@ -1,4 +1,4 @@
-const fibonacciBottomUP = n => {
+const fibonacciBottomUP1 = n => {
   if (n < 0) throw new Error("Number should be positive");
   if (n < 2) return n;
   const fib = {};
@@ -10,6 +10,20 @@ const fibonacciBottomUP = n => {
   }
   return fib[n];
 };
+
+// For every n we only need to know fib(n-1) & fib(n-2)
+// we care about only saving those two values and removing everything else
+var fibonacciBottomUP = function(n) {
+  if (n < 0) throw new Error("Number should be positive");
+
+  // fast solution
+  var fibs = [0, 1];
+  for (; n > 1; n--) {
+    fibs.push(fibs.shift() + fibs[0]);
+  }
+  return fibs[n];
+};
+
 
 // Tests
 
