@@ -214,3 +214,5 @@ console.log(
   traverseBF,
   "traverseBF should be [ [ 1, 0 ], [ 2, 1 ], [ 4, 1 ], [ 3, 2 ], [ 5, 3 ] ]"
 );
+
+module.exports = Graph;

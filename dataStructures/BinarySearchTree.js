@@ -130,16 +130,6 @@ class BinarySearchTree {
       }
     };
     return checkHeights(this) !== -Infinity;
-    // const heights = [];
-    // var recurse = (node, height) => {
-    //   if (!node.left && !node.right) return heights.push(height);
-    //   node.left && recurse(node.left, height + 1);
-    //   node.right && recurse(node.right, height + 1);
-    // };
-    // recurse(this, 1);
-    // const min = Math.min(...heights);
-    // const max = Math.max(...heights);
-    // return max - min <= 1;
   }
   // O(n)
   isAValidBST(node = this, min = -Infinity, max = +Infinity) {
@@ -160,7 +150,7 @@ bsTree
   .insert(14)
   .insert(3)
   .insert(6)
-  .insert(2) 
+  .insert(2)
   // .insert(1) // add these to make it unbalanced
   // .insert(0)
   .insert(7)
@@ -174,7 +164,7 @@ bsTree.traverseDepthFirst_inOrder(function(node) {
 
 console.log(
   result_traverseDepthFirst_inOrder,
-  "should be [3, 5, 6, 8, 12, 13, 14]"
+  "should be [2, 3, 5, 6, 7, 8, 11, 12, 13, 14]"
 );
 console.log("checkIfBalanced ", bsTree.checkIfBalanced());
 
