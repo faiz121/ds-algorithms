@@ -1,11 +1,8 @@
 const fibonacciBottomUP = n => {
   if (n < 0) throw new Error("Number should be positive");
   if (n < 2) return n;
-  const fib = {
-    1: 1,
-    0: 1
-  };
-  for (var k = 1; k <= n; k++) {
+  const fib = {};
+  for (var k = 0; k <= n; k++) {
     let val;
     if (k <= 2) val = 1;
     else val = fib[k - 1] + fib[k - 2];
