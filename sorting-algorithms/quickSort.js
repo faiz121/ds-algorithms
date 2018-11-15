@@ -44,7 +44,7 @@
     than merge sort (if pivot is not in center of array)
 
    Link: https://codepen.io/faiz121/pen/LymoPz?editors=0010
-   CodePen is a fork from Brian Holt
+   CodePen is a fork from Brian Holt's
 */
 
 

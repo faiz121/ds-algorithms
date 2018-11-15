@@ -22,9 +22,13 @@ class TemperatureTracker {
 		this.sum += value;
 		this.count++;
 		this.mean = this.sum / this.count;
+
+		// for maxValue
 		if (this.maxValue === null || value > this.maxValue) {
 			this.maxValue = value;
 		}
+
+		// for minValue
 		if (this.minValue === null || value < this.minValue) {
 			this.minValue = value;
 		}

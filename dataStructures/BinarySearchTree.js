@@ -163,10 +163,10 @@ bsTree.traverseDepthFirst_inOrder(function(node) {
 });
 
 console.log(
-  result_traverseDepthFirst_inOrder,
+  JSON.stringify(result_traverseDepthFirst_inOrder),
   "should be [2, 3, 5, 6, 7, 8, 11, 12, 13, 14]"
 );
-console.log("checkIfBalanced ", bsTree.checkIfBalanced());
+// console.log("checkIfBalanced ", bsTree.checkIfBalanced());
 
 // console.log("IsAValidBST", bsTree.isAValidBST());
 // const result_traverseBreadthFirst = [];
