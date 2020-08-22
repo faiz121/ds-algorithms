@@ -65,8 +65,37 @@ const quickSort = nums => {
     }
     return [...quickSort(left), pivot, ...quickSort(right)];
   };
+
+// Lomotos method
+
+var sortArray = function(nums) {
+  
+  quickSortHelper(0, nums.length - 1)
+  return nums;
+  
+  function quickSortHelper(start, end) {
+    if(start >= end) return;
+    const randomIndex = Math.floor((start + end) / 2);
+    [nums[start], nums[randomIndex]] = [nums[randomIndex], nums[start]];
+    let pivot = nums[start]
+    let smaller = start;
+    let bigger = start + 1;
+    
+    for(;bigger<=end; bigger++) {
+      if(nums[bigger] < pivot) {
+        smaller++
+        [nums[smaller], nums[bigger]] = [nums[bigger], nums[smaller]];
+      }
+    }
+    
+    [nums[smaller], nums[start]] = [nums[start], nums[smaller]];
+    quickSortHelper(start, smaller - 1);
+    quickSortHelper(smaller+1, end);
+  }
+  
+}
   
 const input = [10, 8, 2, 1, 6, 3, 9, 4, 7, 5];
-const answer = quickSort(input);
+const answer = sortArray(input);
 console.log(answer, "Actual");
 console.log([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], "expected");
